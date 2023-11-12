@@ -26,13 +26,15 @@ def generate_dag(num_vertices, num_edges):
 
 
 def main():
-    max_vertices = 1000
-    step = 100
-    repetitions = 10
+    min_vertices = 100   # Минимальное количество вершин в графе
+    max_vertices = 1000  # Максимальное количество вершин в графе
+    step = 100           # Шаг по количеству вершин
+    repetitions = 100    # Количество сгенерированных графов
 
-    for num_vertices in range(1000, max_vertices + 1, step):
-        max_edges = num_vertices * (num_vertices - 1) // 2
-        step_edges = (max_edges - num_vertices) // 3
+    for num_vertices in range(min_vertices, max_vertices + 1, step):
+        max_edges = num_vertices * (num_vertices - 1) // 2  # Максимальное количество ребер в графе
+        step_edges = (max_edges - num_vertices) // 10       # Шаг по количеству ребер
+
         for num_edges in range(num_vertices, max_edges, step_edges):
             execution_times = []
             remaining_edges_sum = 0
